@@ -68,7 +68,7 @@ const FloatingElements = ({
         loop
         preload="auto"
       >
-        <source src="/Portfolio/assets/SummerTimeSadness.mp3" type="audio/mpeg" />
+        <source src={import.meta.env.BASE_URL + 'assets/SummerTimeSadness.mp3'} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
 

@@ -13,7 +13,7 @@ const Header = ({ letterOpen, setLetterOpen }) => {
           <div className="relative z-40 pointer-events-auto">
             <div className="w-28 h-28 md:w-28 md:h-38 lg:w-40 lg:h-40 rounded-full overflow-hidden border-4 border-white/70 shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-white">
               <img
-                src="/Portfolio/assets/ProfilePicture.jpg"
+                src={import.meta.env.BASE_URL + 'assets/ProfilePicture.jpg'}
                 alt="Sandhya Paudel"
                 className="w-full h-full object-cover animate-rotate-gentle"
                 onError={(e) => {

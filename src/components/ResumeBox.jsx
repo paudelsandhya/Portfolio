@@ -5,8 +5,8 @@ const ResumeBox = ({ open, toggle }) => {
   const [downloadStatus, setDownloadStatus] = useState("");
   const [viewStatus, setViewStatus] = useState("");
 
-  // Correct path for GitHub Pages
-  const resumePath = "/Portfolio/assets/SandhyaResume.pdf";
+  // Correct path for GitHub Pages (use Vite base URL at runtime)
+  const resumePath = import.meta.env.BASE_URL + 'assets/SandhyaResume.pdf';
 
   const downloadCV = async (e) => {
     e.stopPropagation();

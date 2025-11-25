@@ -6,14 +6,14 @@ const GalleryBox = ({ open, toggle }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [imageErrors, setImageErrors] = useState({});
   
-  // Photo paths - using correct paths for GitHub Pages with proper case
+  // Photo paths - using correct paths for GitHub Pages
   const photos = [
-    { src: import.meta.env.BASE_URL + 'assets/photo1.jpg', alt: "Photo 1" },
-    { src: import.meta.env.BASE_URL + 'assets/photo2.jpg', alt: "Photo 2" },
-    { src: import.meta.env.BASE_URL + 'assets/photo3.jpg', alt: "Photo 3" },
-    { src: import.meta.env.BASE_URL + 'assets/photo4.jpg', alt: "Photo 4" },
-    { src: import.meta.env.BASE_URL + 'assets/photo5.jpg', alt: "Photo 5" },
-    { src: import.meta.env.BASE_URL + 'assets/photo6.jpg', alt: "Photo 6" }
+    { src: `${import.meta.env.BASE_URL}assets/photo1.jpg`, alt: "Photo 1" },
+    { src: `${import.meta.env.BASE_URL}assets/photo2.jpg`, alt: "Photo 2" },
+    { src: `${import.meta.env.BASE_URL}assets/photo3.jpg`, alt: "Photo 3" },
+    { src: `${import.meta.env.BASE_URL}assets/photo4.jpg`, alt: "Photo 4" },
+    { src: `${import.meta.env.BASE_URL}assets/photo5.jpg`, alt: "Photo 5" },
+    { src: `${import.meta.env.BASE_URL}assets/photo6.jpg`, alt: "Photo 6" }
   ];
   
   const openModal = (photo, index) => {

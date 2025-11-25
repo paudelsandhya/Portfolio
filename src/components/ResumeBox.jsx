@@ -5,8 +5,8 @@ const ResumeBox = ({ open, toggle }) => {
   const [downloadStatus, setDownloadStatus] = useState("");
   const [viewStatus, setViewStatus] = useState("");
 
-  // Correct path for GitHub Pages (use Vite base URL at runtime)
-  const resumePath = import.meta.env.BASE_URL + 'assets/SandhyaResume.pdf';
+  // Correct path for GitHub Pages
+  const resumePath = `${import.meta.env.BASE_URL}assets/SandhyaResume.pdf`;
 
   const downloadCV = async (e) => {
     e.stopPropagation();
@@ -26,7 +26,7 @@ const ResumeBox = ({ open, toggle }) => {
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = "Sandhya_Paudel_Resume.pdf";
+        link.download = "Sandhya_Poudel_Resume.pdf";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

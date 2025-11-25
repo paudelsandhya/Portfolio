@@ -68,12 +68,12 @@ const FloatingElements = ({
         loop
         preload="auto"
       >
-        <source src={import.meta.env.BASE_URL + 'assets/SummerTimeSadness.mp3'} type="audio/mpeg" />
+        <source src={`${import.meta.env.BASE_URL}assets/SummerTimeSadness.mp3`} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
 
       {/* Flower Vase - Bottom Left */}
-  <div className="fixed bottom-6 left-8 md:bottom-8 md:left-8 z-30 pointer-events-none transform -translate-x-1" ref={vaseRef}>
+      <div className="fixed bottom-6 left-8 md:bottom-8 md:left-8 z-30 pointer-events-none transform -translate-x-1" ref={vaseRef}>
         <div className="relative w-48 h-32">
           <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex space-x-2 text-2xl">
             <span className="animate-pulse">🌿</span>
@@ -144,7 +144,7 @@ const FloatingElements = ({
           <div className="relative w-16 h-16 flex items-center justify-center text-4xl text-gray-700 lg:w-24 lg:h-24 lg:text-8xl">
             {isPlaying ? (
               <div className="relative">
-              <div
+                <div
                   className="absolute -bottom-9 -left-5 animate-pulse"
                   style={{ transform: "scale(0.45)", transformOrigin: "center" }}
                 >

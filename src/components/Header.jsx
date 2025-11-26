@@ -47,7 +47,7 @@ const Header = ({ letterOpen, setLetterOpen }) => {
                     💌 A Message From Me
                   </div>
                   <p className="text-xs md:text-lg font-medium">Hi! I'm Sandhya Paudel.</p>
-                  <p className="text-xs md:text-base text-pink-600">Welcome to my portfolio ✨</p>
+                  <p className="text-xs md:text-base text-pink-600">Welcome to my portfolio</p>
                   <p className="text-xs md:text-sm text-pink-300 italic">Click again to close</p>
                   <p className="text-xs md:text-sm text-pink-300 italic">
                     <a

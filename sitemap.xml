@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://paudelsandhya.github.io/Portfolio/</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://paudelsandhya.github.io/Portfolio/assets/Sandhya-Paudel_Profile-Picture.jpg</image:loc>
+      <image:title>Sandhya Paudel</image:title>
+      <image:caption>Profile picture of Sandhya Paudel, a bio-tech student from Nepal showcasing academic projects and skills</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://paudelsandhya.github.io/Portfolio/showcase</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>

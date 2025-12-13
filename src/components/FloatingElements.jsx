@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const FloatingElements = ({
   isPlaying = false,
-  setIsPlaying = () => {},
-  setVasePosition = () => {},
+  setIsPlaying = () => { },
+  setVasePosition = () => { },
 }) => {
   const audioRef = useRef(null);
   const vaseRef = useRef(null);
@@ -73,7 +73,7 @@ const FloatingElements = ({
       </audio>
 
       {/* Flower Vase - Bottom Left */}
-      <div className="fixed bottom-6 left-8 md:bottom-8 md:left-8 z-30 pointer-events-none transform -translate-x-1" ref={vaseRef}>
+      <div className="fixed bottom-6 left-3 md:bottom-8 md:left-15 z-30 pointer-events-none transform -translate-x-1" ref={vaseRef}>
         <div className="relative w-48 h-32">
           <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex space-x-2 text-2xl">
             <span className="animate-pulse">🌿</span>
@@ -81,7 +81,7 @@ const FloatingElements = ({
             <span className="animate-pulse">🌸</span>
             <span className="animate-pulse">💖</span>
           </div>
-          
+
           {/* Single unified vase shape */}
           <svg viewBox="0 0 150 160" className="w-full h-full">
             <defs>
@@ -97,7 +97,7 @@ const FloatingElements = ({
                 <stop offset="100%" style={{ stopColor: '#ffffff', stopOpacity: 0 }} />
               </radialGradient>
             </defs>
-            
+
             {/* Vase body increased width (scaled horizontally ~1.5x) */}
             <path
               d="M 75 10
@@ -116,7 +116,7 @@ const FloatingElements = ({
               fill="url(#vaseGradient)"
               stroke="none"
             />
-            
+
             {/* Glossy highlight */}
             <ellipse
               cx="45"
@@ -134,9 +134,8 @@ const FloatingElements = ({
       <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-30">
         <button
           type="button"
-          className={`cursor-pointer transition-transform duration-300 rounded-full p-4 lg:p-8 shadow-strong border border-purple-100 backdrop-blur-md ${
-            isPlaying ? "bg-gradient-to-br from-white via-pink-100 to-purple-50 scale-110" : "bg-white/90 hover:scale-105"
-          }`}
+          className={`cursor-pointer transition-transform duration-300 rounded-full p-4 lg:p-8 shadow-strong border border-purple-100 backdrop-blur-md ${isPlaying ? "bg-gradient-to-br from-white via-pink-100 to-purple-50 scale-110" : "bg-white/90 hover:scale-105"
+            }`}
           onClick={toggleMusic}
           title={isPlaying ? "Click to pause music" : "Click to play music"}
         >

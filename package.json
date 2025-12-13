@@ -8,7 +8,7 @@
   "author": "Sandhya Poudel",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && copy dist\\index.html dist\\404.html",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
@@ -16,10 +16,12 @@
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",
+    "framer-motion": "^12.23.26",
     "lucide-react": "^0.452.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^7.10.1",
     "tailwind-variants": "^0.2.1",
     "tailwindcss-animate": "^1.0.7"
   },

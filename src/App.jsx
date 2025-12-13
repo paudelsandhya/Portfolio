@@ -1,10 +1,53 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import AboutBox from "./components/AboutBox.jsx";
 import ConnectBox from "./components/ConnectBox.jsx";
 import GalleryBox from "./components/GalleryBox.jsx";
-import ResumeBox from "./components/ResumeBox.jsx";
+import ShowcaseBox from "./components/ShowcaseBox.jsx";
 import FloatingElements from "./components/FloatingElements.jsx";
+import Showcase from "./components/Showcase.jsx";
+
+// Home page component
+const HomePage = ({ letterOpen, setLetterOpen, openBoxes, toggleBox, hearts, isPlaying, setIsPlaying, vasePosition, setVasePosition }) => (
+  <section className="min-h-screen bg-[#FFC5D3] font-sans relative overflow-hidden">
+    {/* Floating Hearts and Flowers */}
+    {hearts.map((heart) => (
+      <div
+        key={heart.id}
+        className={`fixed pointer-events-none z-10 ${heart.type === "butterfly" ? "animate-butterfly-flight" : "animate-float-up"}`}
+        style={{
+          left: `${heart.x}px`,
+          bottom: `${heart.startBottom}px`,
+          animationDelay: `${heart.delay}ms`,
+          animationDuration: `${heart.duration}ms`,
+          "--drift-x": `${heart.drift}px`,
+          fontSize: heart.type === "butterfly" ? "1.75rem" : "1.35rem",
+        }}
+      >
+        {heart.type === "heart" ? "💖" : heart.type === "flower" ? "🌸" : "🦋"}
+      </div>
+    ))}
+
+    <Header letterOpen={letterOpen} setLetterOpen={setLetterOpen} />
+
+    {/* Main content with proper top spacing for fixed header */}
+    <div className="flex-1 min-h-screen flex items-center justify-center pt-36 md:pt-44 pb-32 md:pb-40 px-4 md:px-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl w-full">
+        <AboutBox open={openBoxes[0]} toggle={() => toggleBox(0)} />
+        <GalleryBox open={openBoxes[2]} toggle={() => toggleBox(2)} />
+        <ShowcaseBox open={openBoxes[3]} toggle={() => toggleBox(3)} />
+        <ConnectBox open={openBoxes[1]} toggle={() => toggleBox(1)} />
+      </div>
+    </div>
+
+    <FloatingElements
+      isPlaying={isPlaying}
+      setIsPlaying={setIsPlaying}
+      setVasePosition={setVasePosition}
+    />
+  </section>
+);
 
 const App = () => {
   const [letterOpen, setLetterOpen] = useState(false);
@@ -51,43 +94,25 @@ const App = () => {
   }, [vasePosition]);
 
   return (
-    <section className="min-h-screen bg-[#FFC5D3] font-sans relative overflow-hidden">
-      {/* Floating Hearts and Flowers */}
-      {hearts.map((heart) => (
-        <div
-          key={heart.id}
-          className={`fixed pointer-events-none z-10 ${heart.type === "butterfly" ? "animate-butterfly-flight" : "animate-float-up"}`}
-          style={{
-            left: `${heart.x}px`,
-            bottom: `${heart.startBottom}px`,
-            animationDelay: `${heart.delay}ms`,
-            animationDuration: `${heart.duration}ms`,
-            "--drift-x": `${heart.drift}px`,
-            fontSize: heart.type === "butterfly" ? "1.75rem" : "1.35rem",
-          }}
-        >
-          {heart.type === "heart" ? "💖" : heart.type === "flower" ? "🌸" : "🦋"}
-        </div>
-      ))}
-
-      <Header letterOpen={letterOpen} setLetterOpen={setLetterOpen} />
-
-      {/* Main content with proper top spacing for fixed header */}
-      <div className="flex-1 min-h-screen flex items-center justify-center pt-36 md:pt-44 pb-32 md:pb-40 px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl w-full">
-          <AboutBox open={openBoxes[0]} toggle={() => toggleBox(0)} />
-          <ConnectBox open={openBoxes[1]} toggle={() => toggleBox(1)} />
-          <GalleryBox open={openBoxes[2]} toggle={() => toggleBox(2)} />
-          <ResumeBox open={openBoxes[3]} toggle={() => toggleBox(3)} />
-        </div>
-      </div>
-
-      <FloatingElements
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-        setVasePosition={setVasePosition}
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <HomePage
+            letterOpen={letterOpen}
+            setLetterOpen={setLetterOpen}
+            openBoxes={openBoxes}
+            toggleBox={toggleBox}
+            hearts={hearts}
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
+            vasePosition={vasePosition}
+            setVasePosition={setVasePosition}
+          />
+        }
       />
-    </section>
+      <Route path="/showcase" element={<Showcase />} />
+    </Routes>
   );
 };
 

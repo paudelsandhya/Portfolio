@@ -5,7 +5,7 @@ const GalleryBox = ({ open, toggle }) => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [imageErrors, setImageErrors] = useState({});
-  
+
   // Photo paths - using correct paths for GitHub Pages
   const photos = [
     { src: `${import.meta.env.BASE_URL}assets/photo1.jpg`, alt: "Photo 1" },
@@ -15,12 +15,12 @@ const GalleryBox = ({ open, toggle }) => {
     { src: `${import.meta.env.BASE_URL}assets/photo5.jpg`, alt: "Photo 5" },
     { src: `${import.meta.env.BASE_URL}assets/photo6.jpg`, alt: "Photo 6" }
   ];
-  
+
   const openModal = (photo, index) => {
     setSelectedPhoto({ ...photo, index });
     setCurrentSlideIndex(index);
   };
-  
+
   const closeModal = () => {
     setSelectedPhoto(null);
   };
@@ -52,27 +52,26 @@ const GalleryBox = ({ open, toggle }) => {
   return (
     <div className="relative">
       <div
-        className={`group rounded-[34px] p-[1px] bg-gradient-to-br from-indigo-300 via-white to-blue-100 shadow-strong cursor-pointer transition-all duration-500 ${
-          open ? "min-h-96" : "h-56"
-        }`}
+        className={`group rounded-[34px] p-[1px] bg-gradient-to-br from-purple-300 via-white to-purple-100 shadow-strong cursor-pointer transition-all duration-500 ${open ? "min-h-96" : "h-56"
+          }`}
         onClick={toggle}
       >
         <div
-          className={`relative h-full rounded-[32px] overflow-hidden bg-white/95 border border-white/70 transition-all duration-500 ${
-            open ? "shadow-2xl" : "shadow-lg"
-          }`}
+          className={`relative h-full rounded-[32px] overflow-hidden bg-white/95 border border-white/70 transition-all duration-500 ${open ? "shadow-2xl" : "shadow-lg"
+            }`}
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.18),transparent_60%)] opacity-80"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(147,51,234,0.12),transparent_60%)] opacity-90"></div>
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-purple-100/80 to-transparent"></div>
           <div className="relative p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.4em] text-indigo-400">
-                <span className="w-2 h-2 rounded-full bg-indigo-400 inline-block"></span>
+              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.4em] text-purple-400">
+                <span className="w-2 h-2 rounded-full bg-purple-400 inline-block"></span>
                 gallery
               </div>
               <div className="text-xl">📦</div>
             </div>
-            <h2 className="text-3xl font-extrabold text-indigo-900 tracking-tight">Gallery</h2>
-            <p className="text-sm text-indigo-500 uppercase tracking-[0.4em] mt-1">
+            <h2 className="text-3xl font-extrabold text-purple-900 tracking-tight">Gallery</h2>
+            <p className="text-sm text-purple-500 uppercase tracking-[0.4em] mt-1">
               sneak peek
             </p>
 
@@ -82,7 +81,7 @@ const GalleryBox = ({ open, toggle }) => {
                   {photos.map((photo, index) => (
                     <div
                       key={index}
-                      className="aspect-square rounded-2xl overflow-hidden cursor-pointer border border-indigo-100 bg-white/80 shadow-soft hover:-translate-y-1 transition-all duration-300"
+                      className="aspect-square rounded-2xl overflow-hidden cursor-pointer border border-purple-100 bg-white/80 shadow-soft hover:-translate-y-1 transition-all duration-300"
                       onClick={(e) => {
                         e.stopPropagation();
                         openModal(photo, index);
@@ -95,9 +94,10 @@ const GalleryBox = ({ open, toggle }) => {
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                           onError={() => handleImageError(index)}
                           loading="lazy"
+                          decoding="async"
                         />
                       ) : (
-                        <div className="w-full h-full bg-indigo-50 flex flex-col items-center justify-center text-indigo-400">
+                        <div className="w-full h-full bg-purple-50 flex flex-col items-center justify-center text-purple-400">
                           <ImageIcon size={24} className="mb-2" />
                           <span className="text-xs uppercase tracking-[0.3em]">photo {index + 1}</span>
                         </div>
@@ -105,11 +105,11 @@ const GalleryBox = ({ open, toggle }) => {
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="text-center mt-5">
                   <button
                     onClick={startSlideshow}
-                    className="bg-indigo-100/80 text-indigo-700 px-5 py-2 rounded-full font-semibold hover:bg-indigo-200 transition-colors inline-flex items-center space-x-2 text-sm shadow-soft"
+                    className="bg-purple-100/80 text-purple-700 px-5 py-2 rounded-full font-semibold hover:bg-purple-200 transition-colors inline-flex items-center space-x-2 text-sm shadow-soft"
                   >
                     <span>🎞️</span>
                     <span>View Slideshow</span>
@@ -117,7 +117,7 @@ const GalleryBox = ({ open, toggle }) => {
                 </div>
               </div>
             ) : (
-              <div className="text-center text-indigo-600 opacity-90 mt-8">
+              <div className="text-center text-purple-600 opacity-90 mt-8">
                 <div className="text-5xl mb-2 animate-bounce">👆🏻</div>
                 <div className="text-sm font-semibold tracking-wide">Tap for memories</div>
               </div>
@@ -128,7 +128,7 @@ const GalleryBox = ({ open, toggle }) => {
 
       {/* Photo Modal/Slideshow */}
       {selectedPhoto && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
           onClick={closeModal}
         >
@@ -140,7 +140,7 @@ const GalleryBox = ({ open, toggle }) => {
               className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
-            
+
             {/* Close Button */}
             <button
               onClick={closeModal}
@@ -148,7 +148,7 @@ const GalleryBox = ({ open, toggle }) => {
             >
               <X size={24} />
             </button>
-            
+
             {/* Navigation Arrows */}
             {photos.length > 1 && (
               <>
@@ -172,7 +172,7 @@ const GalleryBox = ({ open, toggle }) => {
                 </button>
               </>
             )}
-            
+
             {/* Photo Counter */}
             <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full backdrop-blur-sm">
               Photo {selectedPhoto.index + 1} of {photos.length}

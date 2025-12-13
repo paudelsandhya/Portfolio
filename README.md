@@ -1,4 +1,4 @@
-# This is the official portfolio website of Sandhya Paudel
+# This is the official portfolio website of Sandhya Paudel (myself)
 
 This website is designed by *Sandhya Paudel* and developed by *Dinesh Poudel*.
 

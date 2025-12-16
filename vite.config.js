@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/Portfolio/',
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -14,9 +14,9 @@ export default defineConfig({
         assetFileNames: (assetInfo) => {
           // Keep original names for specific files
           if (assetInfo.name === 'SandhyaResume.pdf' ||
-              assetInfo.name === 'SummerTimeSadness.mp3' ||
-              assetInfo.name === 'ProfilePicture.jpg' ||
-              assetInfo.name?.match(/^photo\d+\.jpg$/)) {
+            assetInfo.name === 'SummerTimeSadness.mp3' ||
+            assetInfo.name === 'ProfilePicture.jpg' ||
+            assetInfo.name?.match(/^photo\d+\.jpg$/)) {
             return `assets/${assetInfo.name}`;
           }
           // Default naming for other assets

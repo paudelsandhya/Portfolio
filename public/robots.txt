@@ -3,4 +3,4 @@ Allow: /
 Disallow: /node_modules/
 Disallow: /.git/
 
-Sitemap: https://paudelsandhya.github.io/Portfolio/sitemap.xml
+Sitemap: https://www.paudel-sandhya.com.np/sitemap.xml

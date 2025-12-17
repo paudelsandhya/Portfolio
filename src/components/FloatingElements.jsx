@@ -76,9 +76,9 @@ const FloatingElements = ({
       <div className="fixed bottom-6 left-3 md:bottom-8 md:left-15 z-30 pointer-events-none transform -translate-x-1" ref={vaseRef}>
         <div className="relative w-48 h-32">
           <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex space-x-2 text-2xl">
-            <span className="animate-pulse">🌿</span>
             <span className="animate-pulse">🦋</span>
-            <span className="animate-pulse">🌸</span>
+            <span className="animate-pulse">🌸🍀</span>
+            <span className="animate-pulse">🌺🌿</span>
             <span className="animate-pulse">💖</span>
           </div>
 

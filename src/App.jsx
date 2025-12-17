@@ -80,7 +80,7 @@ const HomePage = ({ openBoxes, toggleBox, hearts, isPlaying, setIsPlaying, vaseP
 );
 
 const App = () => {
-  const [openBoxes, setOpenBoxes] = useState([false, true, false, false]);
+  const [openBoxes, setOpenBoxes] = useState([false, false, false, false]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hearts, setHearts] = useState([]);
   const [vasePosition, setVasePosition] = useState({ x: 90, bottom: 100 });

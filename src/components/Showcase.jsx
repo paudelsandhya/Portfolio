@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { ArrowLeft } from 'lucide-react'
 import ResumeDisplay from './ResumeDisplay'
 import Certificates from './Certificates'
+import Header from './Header.jsx'
 
 export default function Showcase() {
   const navigate = useNavigate()
@@ -11,12 +12,14 @@ export default function Showcase() {
 
   return (
     <div className="min-h-screen bg-[#FFC5D3] font-sans relative overflow-hidden">
+      <Header />
+
       {/* Background decorations consistent with main page */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(251,207,232,0.3),transparent_40%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_rgba(253,164,175,0.25),transparent_40%)]"></div>
-      
-      <div className="container mx-auto px-4 py-8 relative z-10 max-w-7xl">
-        
+
+      <div className="container mx-auto px-4 pt-36 md:pt-44 pb-20 relative max-w-7xl">
+
 
         {/* Page Title */}
         <motion.div
@@ -28,7 +31,6 @@ export default function Showcase() {
           <h1 className="text-4xl md:text-5xl font-bold text-rose-900 mb-2">
             Showcase
           </h1>
-          <p className="text-rose-700 text-lg">Certifications | Resume</p>
         </motion.div>
 
         {/* Tab Navigation */}
@@ -40,21 +42,19 @@ export default function Showcase() {
         >
           <button
             onClick={() => setActiveTab('Certificates')}
-            className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-              activeTab === 'Certificates'
-                ? 'bg-rose-600 text-white shadow-lg'
-                : 'bg-white/80 text-rose-900 hover:bg-white'
-            }`}
+            className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === 'Certificates'
+              ? 'bg-rose-600 text-white shadow-lg'
+              : 'bg-white/80 text-rose-900 hover:bg-white'
+              }`}
           >
             Certificates
           </button>
           <button
             onClick={() => setActiveTab('Resume')}
-            className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-              activeTab === 'Resume'
-                ? 'bg-rose-600 text-white shadow-lg'
-                : 'bg-white/80 text-rose-900 hover:bg-white'
-            }`}
+            className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === 'Resume'
+              ? 'bg-rose-600 text-white shadow-lg'
+              : 'bg-white/80 text-rose-900 hover:bg-white'
+              }`}
           >
             Resume
           </button>

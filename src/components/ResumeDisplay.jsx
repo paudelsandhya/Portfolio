@@ -48,21 +48,13 @@ export default function ResumeDisplay() {
         setViewStatus("loading")
 
         try {
-            const response = await fetch(resumePath)
+            // Check if the file exists by making a HEAD request
+            const response = await fetch(resumePath, { method: 'HEAD' })
 
             if (response.ok) {
-                const blob = await response.blob()
-
-                // Verify the blob is not empty
-                if (blob.size === 0) {
-                    throw new Error("PDF file is empty")
-                }
-
-                const url = window.URL.createObjectURL(blob)
-                window.open(url, '_blank')
-
-                // Clean up the URL after a delay
-                setTimeout(() => window.URL.revokeObjectURL(url), 1000)
+                // Open the PDF directly using its actual URL
+                // This preserves the original filename in the browser
+                window.open(resumePath, '_blank')
 
                 setViewStatus("success")
                 setTimeout(() => setViewStatus(""), 2000)

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronLeft, ChevronRight, X, Image as ImageIcon } from "lucide-react";
 import Header from "./Header.jsx";
 
-const Gallery = () => {
+const Workspace = () => {
     const navigate = useNavigate();
     const [selectedPhoto, setSelectedPhoto] = useState(null);
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -68,7 +68,7 @@ const Gallery = () => {
     }, [selectedPhoto, currentSlideIndex]);
 
     return (
-        <div className="min-h-screen bg-[#FFC5D3] font-sans relative overflow-hidden">
+        <div className="min-h-screen font-sans relative overflow-hidden" style={{ backgroundImage: 'url(/Background.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
             <Header />
 
             {/* Background decorative elements */}
@@ -82,18 +82,18 @@ const Gallery = () => {
             <div className="relative pt-36 md:pt-44 pb-20 px-4 md:px-8">
                 <div className="max-w-6xl mx-auto">
 
-                    {/* Gallery Header */}
+                    {/* Workspace Header */}
                     <div className="text-center mb-12">
-                        <div className="flex items-center justify-center gap-2 text-sm uppercase tracking-[0.4em] text-purple-400 mb-4">
-                            
+                        <div className="flex items-center justify-center gap-2 text-sm uppercase tracking-[0.4em] text-grey-crimson/70 mb-4">
+
                         </div>
-                        <h1 className="text-5xl md:text-6xl font-bold text-purple-900 mb-4">
-                            Photo Gallery
+                        <h1 className="text-5xl md:text-6xl font-bold text-grey-crimson mb-4">
+                            Workspace
                         </h1>
-                        <p className="text-lg text-purple-700">
+                        <p className="text-lg text-grey-crimson/80">
                             A collection of moments and memories 📸
                         </p>
-                        <p className="text-lg text-red-700">
+                        <p className="text-lg text-red-500">
                             (This page will soon be updated to include my artworks and blogs as well.)
                         </p>
                     </div>
@@ -192,4 +192,4 @@ const Gallery = () => {
     );
 };
 
-export default Gallery;
+export default Workspace;

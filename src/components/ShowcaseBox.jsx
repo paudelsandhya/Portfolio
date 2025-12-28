@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const ResumeBox = ({ open, toggle }) => {
+const ShowcaseBox = ({ open, toggle }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -9,30 +10,35 @@ const ResumeBox = ({ open, toggle }) => {
   };
 
   return (
-    <div className="relative">
+    <motion.div
+      className="relative"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+    >
       <div
-        className="group rounded-[34px] p-[1px] bg-gradient-to-br from-indigo-300 via-white to-blue-100 shadow-strong cursor-pointer transition-all duration-500 h-auto hover:shadow-2xl"
+        className="group glass-card hover-lift rounded-[34px] cursor-pointer h-auto"
+        style={{ backgroundColor: '#f5e4dc' }}
         onClick={handleClick}
       >
-        <div className="relative h-full rounded-[32px] overflow-hidden bg-white/95 border border-white/70 transition-all duration-500 shadow-lg group-hover:shadow-2xl">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(79,70,229,0.18),transparent_60%)] opacity-80"></div>
-          <div className="relative p-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.4em] text-indigo-400">
-                <span className="w-2 h-2 rounded-full bg-indigo-400 inline-block"></span>
-                showcase
-              </div>
-              <div className="text-xl">🗃️</div>
+        <div className="relative h-full rounded-[32px] overflow-hidden p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.4em] text-grey-crimson/70">
+              <span className="w-2 h-2 rounded-full bg-grey-crimson inline-block"></span>
+              showcase
             </div>
-            <h2 className="text-3xl font-extrabold text-indigo-900 tracking-tight">Certifications & Resume</h2>
-            <p className="text-sm text-indigo-500 uppercase tracking-[0.4em] mt-1">
-              click to explore
-            </p>
+            <div className="text-xl">🖼️</div>
           </div>
+          <h2 className="text-3xl font-bold text-grey-crimson tracking-tight">
+            Certifications & Resume
+          </h2>
+          <p className="text-sm text-grey-crimson/70 uppercase tracking-[0.4em] mt-1">
+            click to explore
+          </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-export default ResumeBox;
+export default ShowcaseBox;

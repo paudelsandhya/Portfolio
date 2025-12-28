@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "homepage": "https://www.paudel-sandhya.com.np",
-  "description": "Professional portfolio website for Sandhya Poudel",
-  "author": "Sandhya Poudel",
+  "description": "Portfolio Website for Sandhya Paudel",
+  "author": "Sandhya Paudel",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/paudelsandhya/Portfolio.git"

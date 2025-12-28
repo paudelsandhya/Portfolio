@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ReactDOM from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 
@@ -20,12 +21,12 @@ function CertificateCard({ cert, index, onSelect }) {
                 transition: { duration: 0.3 }
             }}
             style={{
-                background: 'linear-gradient(135deg, rgba(251, 207, 232, 0.6) 0%, rgba(253, 164, 175, 0.6) 100%)',
-                border: '1px solid rgba(244, 114, 182, 0.3)'
+                backgroundColor: '#f5e4dc',
+                border: '1px solid rgba(95, 73, 80, 0.2)'
             }}
         >
             <motion.div
-                className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-600 to-rose-700"
+                className="absolute top-0 left-0 right-0 h-1 bg-grey-crimson"
                 initial={{ scaleX: 0 }}
                 whileHover={{ scaleX: 1 }}
                 transition={{ duration: 0.4 }}
@@ -52,20 +53,20 @@ function CertificateCard({ cert, index, onSelect }) {
                     </div>
                 )}
 
-                <div className="text-sm text-rose-700 font-semibold mb-1">{cert.institution}</div>
+                <div className="text-sm text-grey-crimson font-semibold mb-1">{cert.institution}</div>
 
                 <motion.h3
-                    className="font-semibold text-lg sm:text-xl text-rose-900"
+                    className="font-semibold text-lg sm:text-xl text-grey-crimson"
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                 >
                     {cert.title}
                 </motion.h3>
 
-                <div className="text-xs text-rose-600 mt-1">{cert.type}</div>
+                <div className="text-xs text-grey-crimson/70 mt-1">{cert.type}</div>
 
                 <motion.p
-                    className="mt-2 sm:mt-3 text-sm text-rose-900/80 leading-relaxed line-clamp-2"
+                    className="mt-2 sm:mt-3 text-sm text-grey-crimson/80 leading-relaxed line-clamp-2"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: index * 0.15 + 0.7 }}
@@ -82,7 +83,7 @@ function CertificateCard({ cert, index, onSelect }) {
                     {!cert.lost && (
                         <motion.button
                             onClick={() => onSelect(cert)}
-                            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm bg-rose-600 hover:bg-rose-700 rounded-lg transition-all text-white"
+                            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm bg-blue-600 hover:bg-red-700 rounded-lg transition-all text-white font-semibold"
                             aria-label={`View ${cert.title} certificate from ${cert.institution}`}
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
@@ -97,7 +98,7 @@ function CertificateCard({ cert, index, onSelect }) {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`Verify ${cert.title} certificate`}
-                            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm bg-rose-600 hover:bg-rose-700 text-white rounded-lg transition-all"
+                            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all font-semibold"
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -106,7 +107,7 @@ function CertificateCard({ cert, index, onSelect }) {
                         </motion.a>
                     )}
                     {cert.lost && (
-                        <div className="text-xs text-rose-600/70 italic">Certificate lost - Event verification available</div>
+                        <div className="text-xs text-grey-crimson/70 italic">Certificate lost - Event verification available</div>
                     )}
                 </motion.div>
             </div>
@@ -117,17 +118,17 @@ function CertificateCard({ cert, index, onSelect }) {
 const CERTIFICATES = [
     {
         id: 'cert-1',
-        title: 'Journey to Taming our Biases',
+        title: 'Journey to Taming Biases',
         institution: 'UNICEF, AGORA',
-        description: 'The Journey to Taming our Biases and has committed to working on being an Inclusion Champion',
+        description: 'Completed the Journey to Taming biases and committed to working on being an Inclusion Champion',
         image: `${import.meta.env.BASE_URL}Achievements/Certificate-1.jpg`,
         verify: 'https://agora.unicef.org/mod/certificate/view.php?id=360248&action=get'
     },
     {
         id: 'cert-2',
-        title: 'CHAT_Course Certificate',
+        title: 'Power of Data to end Harmful Practices',
         institution: 'UNICEF, AGORA',
-        description: 'Harnessing the Power of Data to End Harmful Practices',
+        description: 'Completed the CHAT_Course and Harnessing the Power of Data to End Harmful Practices',
         image: `${import.meta.env.BASE_URL}Achievements/Certificate-2.jpg`,
         verify: 'https://agora.unicef.org/mod/certificate/view.php?id=287112&action=get'
     },
@@ -135,7 +136,7 @@ const CERTIFICATES = [
         id: 'cert-3',
         title: 'Prevention of e-Waste',
         institution: 'unitar, SCYCLE',
-        description: 'How to prevent e-Waste? e-course',
+        description: 'Completed the How to prevent e-Waste? e-course',
         image: `${import.meta.env.BASE_URL}Achievements/Certificate-3.jpg`,
         verify: 'https://unccelearn.org/mod/customcert/my_certificates.php?userid=1370005&certificateid=135&downloadcert=1'
     },
@@ -143,15 +144,15 @@ const CERTIFICATES = [
         id: 'cert-4',
         title: 'Tobacco Harm Reduction',
         institution: 'THR Academy',
-        description: 'Understanding Tobacco Harm Reduction.',
+        description: 'Completed the Understanding Tobacco Harm Reduction course.',
         image: `${import.meta.env.BASE_URL}Achievements/Certificate-4.jpg`,
         verify: null
     },
     {
         id: 'cert-5',
-        title: 'CHAT _ a toolkit',
+        title: 'CHAT - a toolkit',
         institution: 'UNICEF, AGORA',
-        description: 'CHAT - a toolkit to improve Community Engagement in emergencies.',
+        description: 'Completed the CHAT - a toolkit to improve Community Engagement in emergencies course.',
         image: `${import.meta.env.BASE_URL}Achievements/Certificate-5.jpg`,
         verify: 'https://agora.unicef.org/mod/certificate/view.php?id=287112&action=get'
     },
@@ -159,7 +160,7 @@ const CERTIFICATES = [
         id: 'cert-6',
         title: 'International Climate Negotiations',
         institution: 'unitar, COP28',
-        description: 'Mastering International Climate Negotiations: All you need to know',
+        description: 'Completed the Mastering International Climate Negotiations: All you need to know course.',
         image: `${import.meta.env.BASE_URL}Achievements/Certificate-6.jpg`,
         verify: 'https://unccelearn.org/mod/customcert/my_certificates.php?userid=1370005&certificateid=172&downloadcert=1'
     },
@@ -167,7 +168,7 @@ const CERTIFICATES = [
         id: 'cert-7',
         title: 'Basics of UI/UX',
         institution: 'SimpliLearn',
-        description: 'Introduction to Graphics Design. Basics of UI/UX',
+        description: 'Completed the Introduction to Graphics Design. Basics of UI/UX course.',
         image: `${import.meta.env.BASE_URL}Achievements/Certificate-7.jpg`,
         verify: 'https://simpli-web.app.link/e/a5zbkuREXYb'
     },
@@ -175,7 +176,7 @@ const CERTIFICATES = [
         id: 'cert-8',
         title: 'Digital Marketing',
         institution: 'SimpliLearn',
-        description: 'Introduction to Digital Marketing Fundamentals Course.',
+        description: 'Completed the Introduction to Digital Marketing Fundamentals course.',
         image: `${import.meta.env.BASE_URL}Achievements/Certificate-8.jpg`,
         verify: 'https://simpli-web.app.link/e/txg8Ig6xXYb'
     }
@@ -225,22 +226,23 @@ export default function Certificates() {
                 ))}
             </div>
 
+
             {/* Lightbox Modal */}
-            <AnimatePresence>
-                {selectedCert && (
+            {selectedCert && ReactDOM.createPortal(
+                <AnimatePresence>
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
+                        className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/90 overflow-auto"
                         onClick={() => setSelectedCert(null)}
                     >
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
-                            className="relative max-w-4xl w-full rounded-2xl overflow-hidden"
-                            style={{ background: 'linear-gradient(135deg, rgba(251, 207, 232, 0.95) 0%, rgba(253, 164, 175, 0.95) 100%)' }}
+                            className="relative max-w-4xl w-full rounded-2xl overflow-hidden my-auto"
+                            style={{ backgroundColor: '#ffffff' }}
                             onClick={(e) => e.stopPropagation()}
                         >
                             <button
@@ -265,7 +267,7 @@ export default function Certificates() {
                             </button>
 
                             <div className="p-8">
-                                <div className="bg-white/20 rounded-lg overflow-hidden mb-6 h-96 flex items-center justify-center">
+                                <div className="bg-gray-100 rounded-lg overflow-hidden mb-6 h-96 flex items-center justify-center">
                                     {selectedCert.image && (
                                         <motion.img
                                             key={selectedCert.id}
@@ -283,24 +285,24 @@ export default function Certificates() {
                                             }}
                                         />
                                     )}
-                                    {!selectedCert.image && <div className="text-rose-900">Certificate Image</div>}
+                                    {!selectedCert.image && <div className="text-grey-crimson">Certificate Image</div>}
                                 </div>
 
                                 <div className="space-y-4">
                                     <div>
-                                        <div className="text-rose-700 font-semibold">{selectedCert.institution}</div>
-                                        <h2 className="text-2xl sm:text-3xl font-bold text-rose-900 mt-1">{selectedCert.title}</h2>
-                                        <div className="text-sm text-rose-600 mt-1">{selectedCert.type}</div>
+                                        <div className="text-grey-crimson font-semibold">{selectedCert.institution}</div>
+                                        <h2 className="text-2xl sm:text-3xl font-bold text-grey-crimson mt-1">{selectedCert.title}</h2>
+                                        <div className="text-sm text-grey-crimson/70 mt-1">{selectedCert.type}</div>
                                     </div>
 
-                                    <p className="text-rose-900 leading-relaxed">{selectedCert.description}</p>
+                                    <p className="text-grey-crimson leading-relaxed">{selectedCert.description}</p>
 
                                     {selectedCert.verify && (
                                         <a
                                             href={selectedCert.verify}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 px-6 py-3 bg-rose-600 hover:bg-rose-700 text-white rounded-lg transition-all"
+                                            className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-all"
                                         >
                                             <ExternalLink size={18} />
                                             Verify Certificate
@@ -310,8 +312,9 @@ export default function Certificates() {
                             </div>
                         </motion.div>
                     </motion.div>
-                )}
-            </AnimatePresence>
+                </AnimatePresence>,
+                document.body
+            )}
         </>
     )
 }

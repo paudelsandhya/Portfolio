@@ -142,11 +142,11 @@ export default function ResumeDisplay() {
         >
 
             {/* Resume Preview Area */}
-            <div className="bg-gradient-to-br from-rose-50 to-orange-50 rounded-2xl p-8 text-center">
-                <div className="inline-flex items-center justify-center w-24 h-24 bg-rose-100 rounded-full mb-4">
-                    <FileText className="text-rose-600" size={60} />
+            <div className="rounded-2xl p-8 text-center" style={{ backgroundColor: '#f5e4dc' }}>
+                <div className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-4" style={{ backgroundColor: 'rgba(95, 73, 80, 0.1)' }}>
+                    <FileText className="text-grey-crimson" size={60} />
                 </div>
-                <p className="text-rose-700 mb-6">
+                <p className="text-grey-crimson mb-6">
                     View online or download my complete resume in PDF format
                 </p>
 

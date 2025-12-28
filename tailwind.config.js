@@ -7,7 +7,17 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['"Archivo Black"', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        'grey-crimson': '#5f4950',
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+    },
   },
   plugins: [require('tailwindcss-animate')],
 }

@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <>
       {/* Separate Header Background Section */}
-      <div className="fixed top-0 left-0 right-0 h-32 md:h-40 bg-[#FFC5D3]/20 backdrop-blur-sm z-10"></div>
+      <div className="fixed top-0 left-0 right-0 h-32 md:h-40 backdrop-blur-sm z-10"></div>
 
       {/* Header Content */}
       <div className="fixed top-0 left-0 right-0 p-4 md:p-6 z-30 h-32 md:h-40 pointer-events-none">
@@ -15,7 +15,7 @@ const Header = () => {
               <img
                 src={`${import.meta.env.BASE_URL}assets/Sandhya-Paudel_Profile-Picture.jpg`}
                 alt="Sandhya Paudel"
-                className="w-full h-full object-cover animate-rotate-gentle"
+                className="w-full h-full object-cover animate-breathe"
                 loading="eager"
                 fetchpriority="high"
                 onError={(e) => {

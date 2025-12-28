@@ -11,7 +11,7 @@ export default function Showcase() {
   const [activeTab, setActiveTab] = useState('Certificates')
 
   return (
-    <div className="min-h-screen bg-[#FFC5D3] font-sans relative overflow-hidden">
+    <div className="min-h-screen font-sans relative overflow-hidden" style={{ backgroundImage: 'url(/Background.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
       <Header />
 
       {/* Background decorations consistent with main page */}
@@ -28,7 +28,7 @@ export default function Showcase() {
           transition={{ duration: 0.6 }}
           className="text-center mb-8"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-rose-900 mb-2">
+          <h1 className="text-4xl md:text-5xl font-bold text-grey-crimson mb-2">
             Showcase
           </h1>
         </motion.div>
@@ -43,8 +43,8 @@ export default function Showcase() {
           <button
             onClick={() => setActiveTab('Certificates')}
             className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === 'Certificates'
-              ? 'bg-rose-600 text-white shadow-lg'
-              : 'bg-white/80 text-rose-900 hover:bg-white'
+              ? 'glass-card-strong text-grey-crimson shadow-lg'
+              : 'glass-card text-grey-crimson/70 hover:text-grey-crimson'
               }`}
           >
             Certificates
@@ -52,8 +52,8 @@ export default function Showcase() {
           <button
             onClick={() => setActiveTab('Resume')}
             className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === 'Resume'
-              ? 'bg-rose-600 text-white shadow-lg'
-              : 'bg-white/80 text-rose-900 hover:bg-white'
+              ? 'glass-card-strong text-grey-crimson shadow-lg'
+              : 'glass-card text-grey-crimson/70 hover:text-grey-crimson'
               }`}
           >
             Resume
@@ -66,7 +66,7 @@ export default function Showcase() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white/95 rounded-3xl shadow-2xl p-6 md:p-8 min-h-[220px]"
+          className="glass-card-strong rounded-3xl p-6 md:p-8 min-h-[220px]"
         >
           {activeTab === 'Resume' ? <ResumeDisplay /> : <Certificates />}
         </motion.div>

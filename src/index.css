@@ -4,11 +4,16 @@
 
 /* Project background and foreground utilities */
 .bg-background {
-  background-color: #FFC5D3;
+  background-image: url('/Background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .text-foreground {
-  color: #3b1820; /* a readable dark tone on pastel pink */
+  color: #5f4950;
+  /* grey crimson */
 }
 
 /* Custom Animations */
@@ -17,6 +22,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -28,16 +34,20 @@
     transform: translate3d(0, 0, 0) scale(0.9) rotate(0deg);
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   40% {
     transform: translate3d(calc(var(--drift-x, 0px) * 0.4), -35vh, 0) scale(1.2) rotate(120deg);
   }
+
   70% {
     transform: translate3d(calc(var(--drift-x, 0px) * 0.75), -80vh, 0) scale(1.05) rotate(240deg);
     opacity: 0.8;
   }
+
   100% {
     transform: translate3d(var(--drift-x, 0px), -120vh, 0) scale(0.8) rotate(360deg);
     opacity: 0;
@@ -45,9 +55,12 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
   }
+
   50% {
     box-shadow: 0 0 30px rgba(236, 72, 153, 0.6);
   }
@@ -58,6 +71,7 @@
     transform: translateX(-20px);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -65,27 +79,36 @@
 }
 
 @keyframes cloud-float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0px) translateY(0px);
   }
+
   33% {
     transform: translateX(10px) translateY(-5px);
   }
+
   66% {
     transform: translateX(-5px) translateY(5px);
   }
 }
 
 @keyframes musical-bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   25% {
     transform: translateY(-5px) rotate(-5deg);
   }
+
   50% {
     transform: translateY(-10px) rotate(0deg);
   }
+
   75% {
     transform: translateY(-5px) rotate(5deg);
   }
@@ -96,10 +119,12 @@
     transform: scale(1) rotateY(0deg);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   }
+
   50% {
     transform: scale(1.02) rotateY(2deg);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   }
+
   100% {
     transform: scale(1.05) rotateY(0deg);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
@@ -110,9 +135,11 @@
   0% {
     transform: scale(1) rotate(0deg);
   }
+
   50% {
     transform: scale(1.05) rotate(-2deg);
   }
+
   100% {
     transform: scale(1.1) rotate(0deg);
   }
@@ -155,6 +182,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -169,10 +197,12 @@
     transform: translateY(0px) scale(1);
     box-shadow: 0 20px 50px rgba(236, 72, 153, 0.15);
   }
+
   50% {
     transform: translateY(-10px) scale(1.03);
     box-shadow: 0 25px 60px rgba(236, 72, 153, 0.35);
   }
+
   100% {
     transform: translateY(0px) scale(1);
     box-shadow: 0 20px 50px rgba(236, 72, 153, 0.15);
@@ -188,16 +218,20 @@
     transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9);
     opacity: 0;
   }
+
   20% {
     opacity: 1;
   }
+
   50% {
     transform: translate3d(calc(var(--drift-x, 100px) * 0.5), -50vh, 0) rotate(20deg) scale(1.1);
   }
+
   80% {
     transform: translate3d(calc(var(--drift-x, 100px) * 0.9), -100vh, 0) rotate(-15deg) scale(1);
     opacity: 0.8;
   }
+
   100% {
     transform: translate3d(calc(var(--drift-x, 100px)), -140vh, 0) rotate(10deg) scale(0.85);
     opacity: 0;
@@ -255,18 +289,22 @@ a:focus-visible {
     transform: translateY(0px) scale(1) rotate(0deg);
     opacity: 1;
   }
+
   25% {
     transform: translateY(-50px) scale(1.2) rotate(90deg);
     opacity: 0.8;
   }
+
   50% {
     transform: translateY(-100px) scale(1.4) rotate(180deg);
     opacity: 0.6;
   }
+
   75% {
     transform: translateY(-150px) scale(1.2) rotate(270deg);
     opacity: 0.4;
   }
+
   100% {
     transform: translateY(-200px) scale(1) rotate(360deg);
     opacity: 0;
@@ -288,6 +326,7 @@ a:focus-visible {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -317,7 +356,7 @@ a:focus-visible {
   .animate-float-up {
     animation-duration: 8s;
   }
-  
+
   .mobile-touch {
     -webkit-tap-highlight-color: rgba(236, 72, 153, 0.2);
   }
@@ -326,7 +365,7 @@ a:focus-visible {
   .animate-cloud-float {
     animation-duration: 8s;
   }
-  
+
   .animate-musical-bounce {
     animation-duration: 3s;
   }
@@ -337,7 +376,7 @@ a:focus-visible {
   .no-print {
     display: none !important;
   }
-  
+
   .print-friendly {
     background: white !important;
     color: black !important;
@@ -346,6 +385,7 @@ a:focus-visible {
 
 /* Prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   .animate-float-up,
   .animate-cloud-float,
   .animate-musical-bounce,
@@ -374,4 +414,48 @@ a:focus-visible {
 
 .shadow-strong {
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Glassmorphism utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+}
+
+/* Slow breathing animation for profile image */
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.03) rotate(180deg);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 20s ease-in-out infinite;
+}
+
+/* Professional hover lift effect */
+.hover-lift {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.3);
 }

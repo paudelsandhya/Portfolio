@@ -134,7 +134,7 @@ const FloatingElements = ({
       <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-30">
         <button
           type="button"
-          className={`cursor-pointer transition-transform duration-300 rounded-full p-4 lg:p-8 shadow-strong border border-purple-100 backdrop-blur-md ${isPlaying ? "bg-gradient-to-br from-white via-pink-100 to-purple-50 scale-110" : "bg-white/90 hover:scale-105"
+          className={`glass-card cursor-pointer transition-transform duration-300 rounded-full p-4 lg:p-8 shadow-strong border border-white/20 ${isPlaying ? "glass-card-strong scale-110" : "hover:scale-105"
             }`}
           onClick={toggleMusic}
           title={isPlaying ? "Click to pause music" : "Click to play music"}

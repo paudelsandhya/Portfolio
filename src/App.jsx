@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Header from "./components/Header.jsx";
 import ConnectBox from "./components/ConnectBox.jsx";
@@ -7,7 +7,10 @@ import WorkspaceBox from "./components/WorkspaceBox.jsx";
 import ShowcaseBox from "./components/ShowcaseBox.jsx";
 import FloatingElements from "./components/FloatingElements.jsx";
 import Showcase from "./components/Showcase.jsx";
-import Workspace from "./components/Workspace.jsx";
+
+import Writing from "./components/Writing.jsx";
+import Designing from "./components/Designing.jsx";
+import WritingCategory from "./components/WritingCategory.jsx";
 import TypeWriter from "./components/TypeWriter.jsx";
 
 // Home page component
@@ -150,7 +153,10 @@ const App = () => {
             />
           }
         />
-        <Route path="/Workspace" element={<Workspace />} />
+        <Route path="/Workspace" element={<Navigate to="/Workspace/Writing" replace />} />
+        <Route path="/Workspace/Writing" element={<Writing />} />
+        <Route path="/Workspace/Writing/:category" element={<WritingCategory />} />
+        <Route path="/Workspace/Designing" element={<Designing />} />
         <Route path="/showcase" element={<Showcase />} />
       </Routes>
     </AnimatePresence>

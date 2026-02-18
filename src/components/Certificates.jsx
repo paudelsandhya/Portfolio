@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 
-// Certificate card component with eager image loading
 function CertificateCard({ cert, index, onSelect }) {
     return (
         <motion.article

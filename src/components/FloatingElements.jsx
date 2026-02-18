@@ -13,9 +13,6 @@ const FloatingElements = ({
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Only auto-pause here. Starting playback must be initiated from a
-    // user gesture (click) in the same call stack to satisfy browser
-    // autoplay policies — so we trigger play directly in toggleMusic.
     if (!isPlaying) {
       audio.pause();
     }
@@ -38,20 +35,16 @@ const FloatingElements = ({
 
   const toggleMusic = () => {
     const audio = audioRef.current;
-    // If no audio element yet, just toggle state
     if (!audio) {
       setIsPlaying(!isPlaying);
       return;
     }
 
     if (!isPlaying) {
-      // Attempt to play immediately within the click handler so it's
-      // considered a user gesture (avoids autoplay blocking).
       audio.play()
         .then(() => setIsPlaying(true))
         .catch((error) => {
           console.error("Error playing audio:", error);
-          // Ensure state reflects actual playback status
           setIsPlaying(false);
         });
     } else {
@@ -68,7 +61,7 @@ const FloatingElements = ({
         loop
         preload="auto"
       >
-        <source src={`${import.meta.env.BASE_URL}assets/SummerTimeSadness.mp3`} type="audio/mpeg" />
+        <source src={`${import.meta.env.BASE_URL}assets/Dealer.mp3`} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
 

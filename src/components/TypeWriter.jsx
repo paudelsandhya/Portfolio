@@ -4,39 +4,42 @@ const TypeWriter = ({
   texts = ["Student", "Sightseer", "Bio-tech aficionado", "Design enthusiast"],
   speed = 50,
   deleteSpeed = 40,
-  pauseDuration = 1000
+  pauseDuration = 1000,
 }) => {
-  const [displayedText, setDisplayedText] = useState("");
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const currentText = texts[textIndex];
+
   useEffect(() => {
-    const currentText = texts[textIndex];
+    let delay;
 
-    const timer = setTimeout(() => {
-      if (!isDeleting && charIndex < currentText.length) {
-        // Typing
-        setDisplayedText(currentText.slice(0, charIndex + 1));
-        setCharIndex(charIndex + 1);
-      } else if (!isDeleting && charIndex === currentText.length) {
-        // Pause before deleting
-        setTimeout(() => setIsDeleting(true), pauseDuration);
-      } else if (isDeleting && charIndex > 0) {
-        // Deleting
-        setDisplayedText(currentText.slice(0, charIndex - 1));
-        setCharIndex(charIndex - 1);
-      } else if (isDeleting && charIndex === 0) {
-        // Move to next text
-        setIsDeleting(false);
-        setTextIndex((textIndex + 1) % texts.length);
+    if (!isDeleting) {
+      if (charIndex < currentText.length) {
+        delay = setTimeout(() => {
+          setCharIndex((i) => i + 1);
+        }, speed);
+      } else if (charIndex === currentText.length) {
+        delay = setTimeout(() => {
+          setIsDeleting(true);
+        }, pauseDuration);
       }
-    }, isDeleting ? deleteSpeed : speed);
+    } else {
+      if (charIndex > 0) {
+        delay = setTimeout(() => {
+          setCharIndex((i) => i - 1);
+        }, deleteSpeed);
+      } else {
+        setTextIndex((i) => (i + 1) % texts.length);
+        setIsDeleting(false);
+      }
+    }
 
-    return () => clearTimeout(timer);
-  }, [charIndex, isDeleting, textIndex, texts, speed, deleteSpeed, pauseDuration]);
+    return () => clearTimeout(delay);
+  }, [charIndex, currentText.length, isDeleting, speed, deleteSpeed, pauseDuration, texts.length]);
 
-  return <span>{displayedText}</span>;
+  return <span>{currentText.slice(0, charIndex)}</span>;
 };
 
 export default TypeWriter;

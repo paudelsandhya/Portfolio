@@ -18,7 +18,7 @@ const ConnectBox = ({ open, toggle }) => {
     },
     {
       name: "Linkedin",
-      url: "https://www.linkedin.com/in/sandhya-paudel-2b2b2b2/",
+      url: "https://www.linkedin.com/in/sandhya-paudel-823215394/",
       icon: Linkedin,
       brandColor: "text-blue-700"
     }
@@ -32,6 +32,11 @@ const ConnectBox = ({ open, toggle }) => {
   const handleEmailClick = (e, email) => {
     e.stopPropagation();
     window.location.href = `mailto:${email}`;
+  };
+
+  const handleGithubClick = (e) => {
+    e.stopPropagation();
+    window.open('https://github.com/paudelsandhya/Portfolio', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -52,7 +57,16 @@ const ConnectBox = ({ open, toggle }) => {
               <span className="w-2 h-2 rounded-full bg-grey-crimson inline-block"></span>
               connect
             </div>
-            <div className="text-xl">🌐</div>
+            {/* Globe emoji — clickable only on desktop */}
+            <div
+              className="text-xl hidden lg:block cursor-pointer hover:scale-125 transition-transform duration-200"
+              onClick={handleGithubClick}
+              title="View source code"
+            >
+              🌐
+            </div>
+            {/* Globe emoji — non-clickable on mobile */}
+            <div className="text-xl lg:hidden">🌐</div>
           </div>
           <h2 className="text-3xl font-bold text-grey-crimson tracking-tight">Reach out to me</h2>
           <p className="text-sm text-grey-crimson/70 uppercase tracking-[0.4em] mt-1 lg:hidden">

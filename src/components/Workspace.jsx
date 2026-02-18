@@ -1,193 +1,116 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, X, Image as ImageIcon } from "lucide-react";
-import Header from "./Header.jsx";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import Header from './Header.jsx';
+
+const TABS = ['Writing', 'Designing'];
 
 const Workspace = () => {
+    const [activeTab, setActiveTab] = useState('Writing');
     const navigate = useNavigate();
-    const [selectedPhoto, setSelectedPhoto] = useState(null);
-    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-    const [imageErrors, setImageErrors] = useState({});
 
-    // Photo paths - using correct paths for GitHub Pages
-    const photos = [
-        { src: `${import.meta.env.BASE_URL}assets/photo1.jpg`, alt: "Photo 1" },
-        { src: `${import.meta.env.BASE_URL}assets/photo2.jpg`, alt: "Photo 2" },
-        { src: `${import.meta.env.BASE_URL}assets/photo3.jpg`, alt: "Photo 3" },
-        { src: `${import.meta.env.BASE_URL}assets/photo4.jpg`, alt: "Photo 4" },
-        { src: `${import.meta.env.BASE_URL}assets/photo5.jpg`, alt: "Photo 5" },
-        { src: `${import.meta.env.BASE_URL}assets/photo6.jpg`, alt: "Photo 6" }
-    ];
-
-    const handleBack = () => {
-        navigate("/");
+    const handleTabClick = (tab) => {
+        if (tab === 'Designing') {
+            navigate('/Workspace/Designing');
+        } else {
+            setActiveTab(tab);
+            navigate('/Workspace/Writing');
+        }
     };
-
-    const openModal = (photo, index) => {
-        setSelectedPhoto({ ...photo, index });
-        setCurrentSlideIndex(index);
-    };
-
-    const closeModal = () => {
-        setSelectedPhoto(null);
-    };
-
-    const nextSlide = () => {
-        const nextIndex = (currentSlideIndex + 1) % photos.length;
-        setCurrentSlideIndex(nextIndex);
-        setSelectedPhoto({ ...photos[nextIndex], index: nextIndex });
-    };
-
-    const prevSlide = () => {
-        const prevIndex = currentSlideIndex === 0 ? photos.length - 1 : currentSlideIndex - 1;
-        setCurrentSlideIndex(prevIndex);
-        setSelectedPhoto({ ...photos[prevIndex], index: prevIndex });
-    };
-
-    const handleImageError = (index) => {
-        setImageErrors(prev => ({ ...prev, [index]: true }));
-        console.log(`Failed to load image: ${photos[index].src}`);
-    };
-
-    // Keyboard navigation
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (!selectedPhoto) return;
-
-            if (e.key === "ArrowRight") {
-                nextSlide();
-            } else if (e.key === "ArrowLeft") {
-                prevSlide();
-            } else if (e.key === "Escape") {
-                closeModal();
-            }
-        };
-
-        window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [selectedPhoto, currentSlideIndex]);
 
     return (
-        <div className="min-h-screen font-sans relative overflow-hidden" style={{ backgroundImage: 'url(/Background.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
+        <div
+            className="min-h-screen font-sans relative overflow-hidden"
+            style={{
+                backgroundImage: 'url(/Background.jpg)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'fixed',
+            }}
+        >
             <Header />
 
-            {/* Background decorative elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-20 left-10 w-64 h-64 bg-purple-300/20 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-pink-300/15 rounded-full blur-3xl"></div>
-            </div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(251,207,232,0.3),transparent_40%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,_rgba(253,164,175,0.25),transparent_40%)]" />
 
-            {/* Main content */}
-            <div className="relative pt-36 md:pt-44 pb-20 px-4 md:px-8">
-                <div className="max-w-6xl mx-auto">
+            <div className="container mx-auto px-4 pt-36 md:pt-44 pb-20 relative max-w-7xl">
 
-                    {/* Workspace Header */}
-                    <div className="text-center mb-12">
-                        <div className="flex items-center justify-center gap-2 text-sm uppercase tracking-[0.4em] text-grey-crimson/70 mb-4">
-
-                        </div>
-                        <h1 className="text-5xl md:text-6xl font-bold text-grey-crimson mb-4">
-                            Workspace
-                        </h1>
-                        <p className="text-lg text-grey-crimson/80">
-                            A collection of moments and memories 📸
-                        </p>
-                        <p className="text-lg text-red-500">
-                            (This page will soon be updated to include my artworks and blogs as well.)
-                        </p>
-                    </div>
-
-                    {/* Photo Grid */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                        {photos.map((photo, index) => (
-                            <div
-                                key={index}
-                                className="group aspect-square rounded-3xl overflow-hidden cursor-pointer border-4 border-white bg-white shadow-strong hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-                                onClick={() => openModal(photo, index)}
-                            >
-                                {!imageErrors[index] ? (
-                                    <img
-                                        src={photo.src}
-                                        alt={photo.alt}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        onError={() => handleImageError(index)}
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                ) : (
-                                    <div className="w-full h-full bg-purple-50 flex flex-col items-center justify-center text-purple-400">
-                                        <ImageIcon size={48} className="mb-4" />
-                                        <span className="text-sm uppercase tracking-[0.3em] font-semibold">
-                                            Photo {index + 1}
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* Photo Modal/Slideshow */}
-            {selectedPhoto && (
-                <div
-                    className="fixed inset-0 bg-black/95 flex items-center justify-center z-50"
-                    onClick={closeModal}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-8"
                 >
-                    <div className="relative max-w-5xl max-h-full p-4">
-                        {/* Main Image */}
-                        <img
-                            src={selectedPhoto.src}
-                            alt={selectedPhoto.alt}
-                            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-                            onClick={(e) => e.stopPropagation()}
-                        />
+                    <h1 className="text-4xl md:text-5xl font-bold text-grey-crimson mb-2">
+                        Workspace
+                    </h1>
+                </motion.div>
 
-                        {/* Close Button */}
+                {/* Tab Navigation */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="flex justify-center gap-4 mb-8"
+                >
+                    {TABS.map((tab) => (
                         <button
-                            onClick={closeModal}
-                            className="absolute top-2 right-2 bg-purple-600/80 hover:bg-purple-700 text-white rounded-full p-3 backdrop-blur-sm transition-colors shadow-xl"
-                            aria-label="Close"
+                            key={tab}
+                            onClick={() => handleTabClick(tab)}
+                            className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeTab === tab
+                                    ? 'glass-card-strong text-grey-crimson shadow-lg'
+                                    : 'glass-card text-grey-crimson/70 hover:text-grey-crimson'
+                                }`}
                         >
-                            <X size={24} />
+                            {tab}
                         </button>
+                    ))}
+                </motion.div>
 
-                        {/* Navigation Arrows */}
-                        {photos.length > 1 && (
-                            <>
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        prevSlide();
-                                    }}
-                                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-purple-600/80 hover:bg-purple-700 text-white rounded-full p-3 backdrop-blur-sm transition-colors shadow-xl"
-                                    aria-label="Previous photo"
-                                >
-                                    <ChevronLeft size={28} />
-                                </button>
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        nextSlide();
-                                    }}
-                                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-purple-600/80 hover:bg-purple-700 text-white rounded-full p-3 backdrop-blur-sm transition-colors shadow-xl"
-                                    aria-label="Next photo"
-                                >
-                                    <ChevronRight size={28} />
-                                </button>
-                            </>
-                        )}
+                {/* Content Area */}
+                <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="glass-card-strong rounded-3xl p-6 md:p-8 min-h-[220px]"
+                >
+                    {/* Writing sub-tabs */}
+                    <WritingContent />
+                </motion.div>
 
-                        {/* Photo Counter & Keyboard Hint */}
-                        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2">
-                            <div className="bg-purple-600/90 text-white px-5 py-2 rounded-full backdrop-blur-sm font-semibold shadow-xl">
-                                Photo {selectedPhoto.index + 1} of {photos.length}
-                            </div>
-                        </div>
+            </div>
+        </div>
+    );
+};
+
+const WRITING_CATEGORIES = [
+    { label: 'Monologues', emoji: '🎭', path: '/Workspace/Writing/Monologues' },
+    { label: 'Poems', emoji: '🌸', path: '/Workspace/Writing/Poems' },
+    { label: 'Researches', emoji: '🔬', path: '/Workspace/Writing/Researches' },
+    { label: 'Short Stories', emoji: '📖', path: '/Workspace/Writing/Short-Stories' },
+];
+
+const WritingContent = () => {
+    const navigate = useNavigate();
+
+    return (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {WRITING_CATEGORIES.map(({ label, emoji, path }) => (
+                <button
+                    key={label}
+                    onClick={() => navigate(path)}
+                    className="group flex items-center gap-4 rounded-2xl p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                    style={{ backgroundColor: '#f5e4dc' }}
+                >
+                    <span className="text-3xl">{emoji}</span>
+                    <div>
+                        <p className="font-bold text-grey-crimson text-lg leading-tight">{label}</p>
+                        <p className="text-xs text-grey-crimson/60 uppercase tracking-[0.3em] mt-0.5">click to explore</p>
                     </div>
-                </div>
-            )}
+                </button>
+            ))}
         </div>
     );
 };

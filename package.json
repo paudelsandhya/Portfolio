@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "homepage": "https://www.paudel-sandhya.com.np",
-  "description": "Portfolio Website for Sandhya Paudel",
+  "description": "Sandhya Paudel prototype portfolio made using React",
   "author": "Sandhya Paudel",
   "repository": {
     "type": "git",

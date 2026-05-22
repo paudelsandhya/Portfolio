@@ -6,12 +6,14 @@ import ResumeDisplay from './ResumeDisplay'
 import Certificates from './Certificates'
 import Header from './Header.jsx'
 
+const backgroundImage = `${import.meta.env.BASE_URL}Background.jpg`;
+
 export default function Showcase() {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState('Certificates')
 
   return (
-    <div className="min-h-screen font-sans relative overflow-hidden" style={{ backgroundImage: 'url(/Background.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
+    <div className="min-h-screen font-sans relative overflow-hidden" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
       <Header />
 
       {/* Background decorations consistent with main page */}

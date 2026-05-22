@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from './Header.jsx';
 
+const backgroundImage = `${import.meta.env.BASE_URL}Background.jpg`;
+
 const Designing = () => {
     const navigate = useNavigate();
 
@@ -10,7 +12,7 @@ const Designing = () => {
         <div
             className="min-h-screen font-sans relative overflow-hidden"
             style={{
-                backgroundImage: 'url(/Background.jpg)',
+                backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

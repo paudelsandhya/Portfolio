@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from './Header.jsx';
 
+const backgroundImage = `${import.meta.env.BASE_URL}Background.jpg`;
+
 const TABS = ['Writing', 'Designing'];
 
 const Workspace = () => {
@@ -22,7 +24,7 @@ const Workspace = () => {
         <div
             className="min-h-screen font-sans relative overflow-hidden"
             style={{
-                backgroundImage: 'url(/Background.jpg)',
+                backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

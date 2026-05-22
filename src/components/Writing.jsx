@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from './Header.jsx';
 
+const backgroundImage = `${import.meta.env.BASE_URL}Background.jpg`;
+
 const WRITING_CATEGORIES = [
     { label: 'Monologues', emoji: '🎭', path: '/Workspace/Writing/Monologues' },
     { label: 'Poems', emoji: ' 🕊️', path: '/Workspace/Writing/Poems' },
@@ -17,7 +19,7 @@ const Writing = () => {
         <div
             className="min-h-screen font-sans relative overflow-hidden"
             style={{
-                backgroundImage: 'url(/Background.jpg)',
+                backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

@@ -13,9 +13,11 @@ import Designing from "./components/Designing.jsx";
 import WritingCategory from "./components/WritingCategory.jsx";
 import TypeWriter from "./components/TypeWriter.jsx";
 
+const backgroundImage = `${import.meta.env.BASE_URL}Background.jpg`;
+
 // Home page component
 const HomePage = ({ openBoxes, toggleBox, hearts, isPlaying, setIsPlaying, vasePosition, setVasePosition }) => (
-  <section className="min-h-screen font-sans relative overflow-hidden" style={{ backgroundImage: 'url(/Background.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
+  <section className="min-h-screen font-sans relative overflow-hidden" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
     {/* Floating Hearts and Flowers */}
     {hearts.map((heart) => (
       <div

@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 import { Download, Eye, AlertCircle, FileText } from 'lucide-react';
 import Header from './Header.jsx';
 
+const backgroundImage = `${import.meta.env.BASE_URL}Background.jpg`;
+const baseUrl = import.meta.env.BASE_URL;
+
 const CATEGORY_FILES = {
     Monologues: ['The Shape Of Yes.pdf'],
     Poems: ['all my love..pdf', 'floor.pdf', 'so, bitter..pdf', 'whispers.pdf'],
@@ -127,7 +130,7 @@ const WritingCategory = () => {
         return (
             <div
                 className="min-h-screen font-sans relative overflow-hidden"
-                style={{ backgroundImage: 'url(/Background.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}
+                style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}
             >
                 <Header />
                 <div className="flex items-center justify-center min-h-screen">
@@ -140,7 +143,7 @@ const WritingCategory = () => {
     return (
         <div
             className="min-h-screen font-sans relative overflow-hidden"
-            style={{ backgroundImage: 'url(/Background.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}
+            style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}
         >
             <Header />
 
@@ -171,7 +174,7 @@ const WritingCategory = () => {
                         >
                             <PdfCard
                                 filename={filename}
-                                pdfPath={`/Workspace/Writing/${category}/${filename}`}
+                                pdfPath={`${baseUrl}Workspace/Writing/${category}/${filename}`}
                             />
                         </motion.div>
                     ))}
